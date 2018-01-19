@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<h1>Upload to Icon Library</h1>
+<div class="card">
+  <h1 class="default-padding">Upload to Icon Library</h1>
 
+  <form method="POST" enctype="multipart/form-data" action="/process_upload">
+    <input type="file" name="file[]" multiple="">
+    <input type="submit" value="add">
+  </form>
+</div>
 
 {% endblock %}

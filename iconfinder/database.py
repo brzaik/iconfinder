@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+
 engine = create_engine(
     'mysql+pymysql://craftcms:T5M22cux1Pu7tFUZ@localhost/iconfinder?charset=utf8',
     connect_args = {
@@ -26,9 +27,15 @@ def init_db():
     Base.metadata.create_all(engine)
 
     from iconfinder.models import Icon
+    from iconfinder.models import Category
+    from iconfinder.models import Source
+
     db_session.add_all([
         Icon(shortname='edit', mimetype='svg'),
         Icon(shortname='add', mimetype='svg')
+    ])
+    db_session.add_all([
+        Category(name='Uncategorized')
     ])
     db_session.commit()
 

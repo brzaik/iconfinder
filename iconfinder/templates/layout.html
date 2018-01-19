@@ -2,29 +2,33 @@
 <head>
   <title>IconFinder</title>
 
-
 {% assets "all_css" %}
   <link rel="stylesheet" href="{{ ASSET_URL }}">
 {% endassets %}
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=PT+Sans);
-
-body{
-    text-align: center;
-}
-h1{
-    font-family: 'PT Sans', sans-serif;
-    font-weight: normal;
-    font-size: 2.5em;
-}
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 </style>
 
 </head>
+
 <body>
-  {% block body %}
-  {% endblock %}
+
+  <header class="navbar">
+    <section class="navbar-section">
+      <a href="/" class="btn btn-link"><strong>ICONFINDER</strong></a>
+    </section>
+    <section class="navbar-section">
+      <a href="/sources" class="btn btn-link">Sources</a>
+      <a href="/upload" class="btn btn-link">Upload Icons</a>
+    </section>
+  </header>
+
+  <div class="content">
+    {% block body %}
+    {% endblock %}
+  </div>
 
 </body>
 </html>
