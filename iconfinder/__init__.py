@@ -36,8 +36,11 @@ assets = Environment(app)
 
 ***REMOVED*** load flask-assets bundles
 scss = Bundle('*.scss', filters='scss', output='css/sass.css')
-all_css = Bundle(scss, filters='cssmin', output="css/all.css")
+all_css = Bundle(scss, filters='cssmin', output="gen/all.css")
 assets.register('all_css', all_css)
+
+all_js = Bundle('js/*.js', filters='rjsmin', output="gen/all.min.js")
+assets.register('all_js', all_js)
 
 ***REMOVED*** set livereload for app
 app.debug = True
@@ -91,6 +94,17 @@ def upload():
 @app.route('/sources/')
 def sources_list():
     return render_template('sources.html', title='Manage Icon Sources')
+
+@app.route('/sources/add', methods=['GET','POST'])
+def sources_add():
+    db_session.execute('insert into sources (name, repo_type, url) values (?, ?, ?)', [request.form['name'], request.form['repo_type'], ])
+    db.commit()
+    flash('New source was successfully added.')
+    return redirect(url_for('sources_list'))
+
+@app.route('/sources/refresh')
+def sources_refresh():
+    return render_template('sources_refresh.html', title='Refresh Icons')
 
 
 @app.route('/process_upload', methods=["POST"])

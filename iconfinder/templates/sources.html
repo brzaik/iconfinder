@@ -2,7 +2,11 @@
 {% block body %}
 
 <div class="card">
-  <h1 class="default-padding">Manage Icon Sources</h1>
+  <div class="default-padding">
+    <h1>Manage Icon Sources</h1>
+    <a href="/sources/add" class="btn btn-primary">Add Source</a>
+    <a href="/sources/refresh" class="btn">Refresh Icons</a>
+  </div>
 
   <table class="table table-striped table-hover">
     <thead>
@@ -22,6 +26,25 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
+
+<!-- Add Source Dialog -->
+<div class="modal" id="modal-id">
+  <a href="***REMOVED***close" class="modal-overlay" aria-label="Close"></a>
+  <div class="modal-container">
+    <div class="modal-header">
+      <a href="***REMOVED***close" class="btn btn-clear float-right" aria-label="Close"></a>
+      <div class="modal-title h5">Add Source</div>
+    </div>
+    <div class="modal-body">
+      <div class="content">
+        <!-- content here -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      ...
+    </div>
+  </div>
 </div>
 
 {% endblock %}
