@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>IconFinder</title>
+
+
+{% assets "all_css" %}
+  <link rel="stylesheet" href="{{ ASSET_URL }}">
+{% endassets %}
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+
+body{
+    text-align: center;
+}
+h1{
+    font-family: 'PT Sans', sans-serif;
+    font-weight: normal;
+    font-size: 2.5em;
+}
+
+</style>
+
+</head>
+<body>
+  {% block body %}
+  {% endblock %}
+
+</body>
+</html>
