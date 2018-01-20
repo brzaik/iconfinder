@@ -6,6 +6,7 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
 from flask_assets import Environment, Bundle
 from flask_uploads import UploadSet, IMAGES, configure_uploads
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from iconfinder.database import db_session
 
 ***REMOVED*** Database Model
@@ -20,6 +21,7 @@ from iconfinder.models import Icon, Category, Source
 ***REMOVED*** Initialize app
 app = Flask(__name__, instance_relative_config=True)
 assets = Environment(app)
+app.config['SECRET_KEY'] = os.urandom(24).encode('hex')
 
 ***REMOVED*** Uploads
 
@@ -63,6 +65,15 @@ def shutdown_dbsession(exception=None):
     db_session.remove()
 
 
+class SourceForm(Form):
+    name = TextField('Name:', validators=[validators.required()])
+    repo_type = TextField('Repo Type:', validators=[validators.required()])
+    url = TextField('URL:', validators=[validators.required()])
+
+    def reset(self):
+        blankData = MultiDict([ ('csrf', self.reset_csrf() ) ])
+        self.process(blankData)
+
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED*** blueprints ***REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
@@ -91,16 +102,28 @@ def upload():
     return render_template('upload.html', title='Upload to Icon Library')
 
 ***REMOVED*** Icon Uploading
-@app.route('/sources/')
+@app.route('/sources/', methods=['GET', 'POST'])
 def sources_list():
-    return render_template('sources.html', title='Manage Icon Sources')
+    sources = db_session.query(Source).all()
+    form = SourceForm(request.form)
 
-@app.route('/sources/add', methods=['GET','POST'])
-def sources_add():
-    db_session.execute('insert into sources (name, repo_type, url) values (?, ?, ?)', [request.form['name'], request.form['repo_type'], ])
-    db.commit()
-    flash('New source was successfully added.')
-    return redirect(url_for('sources_list'))
+    print form.errors
+    if request.method == 'POST':
+        name = request.form['name']
+        repo_type = request.form['repo_type']
+        url = request.form['url']
+
+        if form.validate():
+            flash('New source was successfully added.')
+            source = Source(name, repo_type, url)
+            db_session.add(source)
+            db_session.commit()
+            return redirect(url_for('sources_list'))
+        else:
+            flash('Please fill in the required fields and try again.')
+
+    return render_template('sources.html', title='Manage Icon Sources', form = form, sources = sources)
+
 
 @app.route('/sources/refresh')
 def sources_refresh():
