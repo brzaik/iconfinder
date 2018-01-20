@@ -6,12 +6,12 @@
 
 from flask import render_template, Blueprint, request, redirect, url_for, flash, abort
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+from iconfinder import app
 
 from iconfinder.database import db_session
 
 ***REMOVED*** Database Model
 from iconfinder.models import Source
-
 
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED*** config ***REMOVED******REMOVED******REMOVED******REMOVED***
@@ -40,7 +40,7 @@ class SourceForm(Form):
 
 @sources_blueprint.route('/sources/', methods=['GET', 'POST'])
 def sources_list():
-    sources = db_session.query(Source).all()
+    sources = db_session.query.all()
     form = SourceForm(request.form)
 
     print form.errors
@@ -59,6 +59,15 @@ def sources_list():
             flash('Please fill in the required fields and try again.')
 
     return render_template('sources.html', title='Manage Icon Sources', form = form, sources = sources)
+
+
+@sources_blueprint.route('/source/<source_id>')
+def delete_source(source_id):
+    source = Source.query.filter_by(id=source_id).first_or_404()
+
+    db_session.delete(source)
+    db_session.commit()
+    return redirect(url_for('sources.sources_list'))
 
 
 @sources_blueprint.route('/sources/refresh')
