@@ -78,17 +78,10 @@ class SourceForm(Form):
 ***REMOVED******REMOVED******REMOVED******REMOVED*** blueprints ***REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 
-***REMOVED*** from project.users.views import users_blueprint
-***REMOVED*** from project.recipes.views import recipes_blueprint
-***REMOVED*** from project.recipes_api.views import recipes_api_blueprint
-***REMOVED***
-***REMOVED*** ***REMOVED*** register the blueprints
-***REMOVED*** app.register_blueprint(users_blueprint)
-***REMOVED*** app.register_blueprint(recipes_blueprint)
-***REMOVED*** app.register_blueprint(recipes_api_blueprint)
+from iconfinder.sources.views import sources_blueprint
 
-
-***REMOVED******REMOVED******REMOVED******REMOVED*** NOTHING DEFINED ***REMOVED******REMOVED******REMOVED******REMOVED***
+***REMOVED*** register the blueprints
+app.register_blueprint(sources_blueprint)
 
 
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
@@ -111,46 +104,11 @@ def index():
 def upload():
     return render_template('upload.html', title='Upload to Icon Library')
 
-***REMOVED*** Icon Uploading
-@app.route('/sources/', methods=['GET', 'POST'])
-def sources_list():
-    sources = db_session.query(Source).all()
-    form = SourceForm(request.form)
-
-    print form.errors
-    if request.method == 'POST':
-        name = request.form['name']
-        repo_type = request.form['repo_type']
-        url = request.form['url']
-
-        if form.validate():
-            flash('New source was successfully added.')
-            source = Source(name, repo_type, url)
-            db_session.add(source)
-            db_session.commit()
-            return redirect(url_for('sources_list'))
-        else:
-            flash('Please fill in the required fields and try again.')
-
-    return render_template('sources.html', title='Manage Icon Sources', form = form, sources = sources)
-
-
-@app.route('/sources/refresh')
-def sources_refresh():
-    return render_template('sources_refresh.html', title='Refresh Icons')
-
-
 @app.route('/process_upload', methods=["POST"])
 def process_upload():
     uploaded_files = request.files.getlist("file[]")
     return ""
 
-
-***REMOVED******REMOVED*** TEST ROUTES
-***REMOVED*** test hello
-@app.route("/hello/<string:name>/")
-def hello(name):
-    return render_template('index.html',name=name)
 
 ***REMOVED*** sample api route
 @app.route('/api/icons/')
