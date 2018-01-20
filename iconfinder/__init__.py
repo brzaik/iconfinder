@@ -78,6 +78,16 @@ class SourceForm(Form):
 ***REMOVED******REMOVED******REMOVED******REMOVED*** blueprints ***REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 
+***REMOVED*** from project.users.views import users_blueprint
+***REMOVED*** from project.recipes.views import recipes_blueprint
+***REMOVED*** from project.recipes_api.views import recipes_api_blueprint
+***REMOVED***
+***REMOVED*** ***REMOVED*** register the blueprints
+***REMOVED*** app.register_blueprint(users_blueprint)
+***REMOVED*** app.register_blueprint(recipes_blueprint)
+***REMOVED*** app.register_blueprint(recipes_api_blueprint)
+
+
 ***REMOVED******REMOVED******REMOVED******REMOVED*** NOTHING DEFINED ***REMOVED******REMOVED******REMOVED******REMOVED***
 
 
