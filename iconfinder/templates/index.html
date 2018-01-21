@@ -1,21 +1,13 @@
 {% extends "layout-2col.html" %}
 {% block content %}
 
-<div class="container icon-grid">
-  {% for icon in icons %}
-  <div class="card-wrapper">
-    <a id="icon-card-{{ icon.id }}" data-icon-id="{{ icon.id }}" class="icon-card-link" href="***REMOVED***">
-      <div class="card">
-        <div class="card-image">
-          <img src="{{ url_for('static', filename=icon.localpath) }}" class="img-responsive" />
-        </div>
-        <div class="card-header">
-          <div class="card-subtitle text-gray">{{ icon.shortname.capitalize() }}</div>
-        </div>
-      </div>
-    </a>
+<div class="container">
+  <h5 class="icon-category_header">Uncategorized</h5>
+  <div class="icon-grid">
+    {% with icons=icons %}
+    {% include 'category_icons.html' %}
+    {% endwith %}
   </div>
-  {% endfor %}
 </div>
 
 {% endblock %}

@@ -1,5 +1,4 @@
 {% if icon %}
-  <h2>Icon Details</h2>
   <br />
   <img style="width: 75%; margin: 0 auto;" src="{{ url_for('static', filename=icon.localpath) }}" class="img-responsive" />
 
@@ -8,13 +7,25 @@
   <table class="table table-striped table-hover">
     <tbody>
       <tr>
+        <td><strong>Category</strong></td>
+        <td>
+          {% if category %}
+            {{ category.name }}
+          {% else %}
+            Uncategorized
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
         <td><strong>Filename</strong></td>
         <td>{{ icon.shortname + "." + icon.mimetype }}</td>
       </tr>
+      {% if source %}
       <tr>
         <td><strong>Source</strong></td>
         <td><a href="{{ source.url }}" target="_blank">{{ source.name }}</a>&nbsp;&nbsp;<i class="icon icon-share"></i></td>
       </tr>
+      {% endif %}
     </tbody>
   </table>
 

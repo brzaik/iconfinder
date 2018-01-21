@@ -33,6 +33,7 @@ icons_blueprint = Blueprint('icons', __name__)
 @icons_blueprint.route('/icon/<icon_id>')
 def icon_show(icon_id):
     icon = Icon.query.filter_by(id=icon_id).first_or_404()
-    source = Source.query.filter_by(id=icon.source_id).first_or_404()
+    source = Source.query.filter_by(id=icon.source_id).first()
+    category = Category.query.filter_by(id=icon.category_id).first()
 
-    return render_template('icon.html', icon=icon, source=source)
+    return render_template('icon.html', icon=icon, source=source, category=category)
