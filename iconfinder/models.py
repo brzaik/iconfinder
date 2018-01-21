@@ -2,7 +2,7 @@ from iconfinder import db, app
 
 class Icon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    shortname = db.Column(db.String(20))
+    shortname = db.Column(db.String(500))
     mimetype = db.Column(db.String(20))
     image_filename = db.Column(db.String(500), default=None, nullable=True)
     image_url = db.Column(db.String(500), default=None, nullable=True)

@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5 {
     text-align: center;
     padding-top: 15%;
     transition: linear .1s all;
+    border: solid 3px ***REMOVED***FFF;
 
     &.active {
       border: solid 3px lighten(***REMOVED***7B66FF, 10%);
@@ -43,6 +44,13 @@ h1, h2, h3, h4, h5 {
 
     .card-subtitle {
       transition: linear .1s all;
+
+      &.truncate {
+        width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 
