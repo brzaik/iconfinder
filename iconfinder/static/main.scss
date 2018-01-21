@@ -87,6 +87,9 @@ h1, h2, h3, h4, h5 {
   box-shadow: 0px 2px 8px ***REMOVED***ccc;
   height: 100%;
   padding: 3.4rem 1rem 1rem 1rem !important;
+  position: fixed;
+  top: 0px;
+  right: 0px;
 }
 
 .card, .modal-container {
@@ -96,7 +99,7 @@ h1, h2, h3, h4, h5 {
 .navbar {
   background: ***REMOVED***19212B;
   box-shadow: 0px 2px 8px ***REMOVED***ccc;
-  position: absolute;
+  position: fixed;
   z-index: 999;
   top: 0px;
   left: 0px;
