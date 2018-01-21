@@ -1,14 +1,11 @@
-from sqlalchemy import Column, Integer, String
-from iconfinder.database import Base
+from iconfinder import db, app
 
-class Icon(Base):
-    __tablename__ = 'icons'
-
-    id = Column(Integer, primary_key=True)
-    shortname = Column(String(20), unique=True)
-    mimetype = Column(String(20))
-    image_filename = Column(String(500), default=None, nullable=True)
-    image_url = Column(String(500), default=None, nullable=True)
+class Icon(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    shortname = db.Column(db.String(20), unique=True)
+    mimetype = db.Column(db.String(20))
+    image_filename = db.Column(db.String(500), default=None, nullable=True)
+    image_url = db.Column(db.String(500), default=None, nullable=True)
 
     def __init__(self, shortname=None, mimetype=None, image_filename=None, image_url=None):
         self.shortname = shortname
@@ -26,11 +23,9 @@ class Icon(Base):
             'mimetype': self.mimetype
         }
 
-class Category(Base):
-    __tablename__ = 'categories'
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(20), unique=True)
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=True)
 
     def __init__(self, name=None):
         self.name = name
@@ -45,13 +40,11 @@ class Category(Base):
         }
 
 
-class Source(Base):
-    __tablename__ = 'sources'
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(20), unique=True)
-    repo_type = Column(String(20), unique=True)
-    url = Column(String(500), unique=True)
+class Source(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=True)
+    repo_type = db.Column(db.String(20), unique=True)
+    url = db.Column(db.String(500), unique=True)
 
     def __init__(self, name=None, repo_type=None, url=None):
         self.name = name

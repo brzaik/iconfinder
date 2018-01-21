@@ -6,9 +6,7 @@
 
 from flask import render_template, Blueprint, request, redirect, url_for, flash, abort
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
-from iconfinder import app
-
-from iconfinder.database import db_session
+from iconfinder import app, db
 
 ***REMOVED*** Database Model
 from iconfinder.models import Source
@@ -40,7 +38,7 @@ class SourceForm(Form):
 
 @sources_blueprint.route('/sources/', methods=['GET', 'POST'])
 def sources_list():
-    sources = db_session.query.all()
+    sources = Source.query.all()
     form = SourceForm(request.form)
 
     print form.errors
@@ -52,8 +50,8 @@ def sources_list():
         if form.validate():
             flash('New source was successfully added.')
             source = Source(name, repo_type, url)
-            db_session.add(source)
-            db_session.commit()
+            db.session.add(source)
+            db.session.commit()
             return redirect(url_for('sources.sources_list'))
         else:
             flash('Please fill in the required fields and try again.')
@@ -65,8 +63,8 @@ def sources_list():
 def delete_source(source_id):
     source = Source.query.filter_by(id=source_id).first_or_404()
 
-    db_session.delete(source)
-    db_session.commit()
+    db.session.delete(source)
+    db.session.commit()
     return redirect(url_for('sources.sources_list'))
 
 

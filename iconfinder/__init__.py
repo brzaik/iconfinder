@@ -2,15 +2,16 @@
 ***REMOVED******REMOVED******REMOVED******REMOVED*** imports ***REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 
-***REMOVED***
+from os.path import join, isfile
+
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
+from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment, Bundle
 from flask_uploads import UploadSet, IMAGES, configure_uploads
+from flask_migrate import Migrate
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
-from iconfinder.database import db_session
 
-***REMOVED*** Database Model
-from iconfinder.models import Icon, Category, Source
+from config import *
 
 
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
@@ -20,20 +21,10 @@ from iconfinder.models import Icon, Category, Source
 
 ***REMOVED*** Initialize app
 app = Flask(__name__, instance_relative_config=True)
+
 assets = Environment(app)
-app.config['SECRET_KEY'] = os.urandom(24).encode('hex')
-
-***REMOVED*** Uploads
-
-***REMOVED*** grab the folder of the top-level directory of this project
-***REMOVED*** ***REMOVED***
-***REMOVED*** ***REMOVED***
-***REMOVED***
-***REMOVED*** ***REMOVED***
-***REMOVED*** UPLOADS_DEFAULT_URL = 'http://localhost:5000/static/uploads/'
-***REMOVED***
-***REMOVED*** ***REMOVED***
-***REMOVED*** UPLOADED_IMAGES_URL = 'http://localhost:5000/static/uploads/'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 ***REMOVED*** load flask-assets bundles
@@ -48,10 +39,6 @@ assets.register('all_js', all_js)
 app.debug = True
 app.jinja_env.auto_reload = True
 
-***REMOVED*** Configure the image uploading via Flask-Uploads
-***REMOVED*** images = UploadSet('images', IMAGES)
-***REMOVED*** configure_uploads(app, images)
-
 
 app.config.from_object(__name__)
 app.config.update(dict(
@@ -59,20 +46,6 @@ app.config.update(dict(
 ))
 app.config.from_envvar('FLASK_SERVER_SETTINGS', silent=True)
 
-
-@app.teardown_appcontext
-def shutdown_dbsession(exception=None):
-    db_session.remove()
-
-
-class SourceForm(Form):
-    name = TextField('Name:', validators=[validators.required()])
-    repo_type = TextField('Repo Type:', validators=[validators.required()])
-    url = TextField('URL:', validators=[validators.required()])
-
-    def reset(self):
-        blankData = MultiDict([ ('csrf', self.reset_csrf() ) ])
-        self.process(blankData)
 
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED*** blueprints ***REMOVED******REMOVED******REMOVED******REMOVED***
@@ -88,6 +61,9 @@ app.register_blueprint(sources_blueprint)
 ***REMOVED******REMOVED******REMOVED******REMOVED*** routes ***REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 
+***REMOVED*** Database Model
+from iconfinder.models import Icon, Category, Source
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -95,7 +71,7 @@ def allowed_file(filename):
 ***REMOVED*** Default Route: Show icon library
 @app.route("/")
 def index():
-    icons = db_session.query(Icon).all()
+    icons = Icon.query.all()
     return render_template('index.html', title='IconFinder',icons=icons)
 
 
@@ -113,12 +89,12 @@ def process_upload():
 ***REMOVED*** sample api route
 @app.route('/api/icons/')
 def icons():
-    icons = db_session.query(Icon).all()
+    icons = Icon.query.all()
     return json.jsonify([icon.to_dict() for icon in icons])
 
 @app.route('/api/categories/')
 def categories():
-    categories = db_session.query(Category).all()
+    categories = Category.query.all()
     return json.jsonify([category.to_dict() for category in categories])
 
 
