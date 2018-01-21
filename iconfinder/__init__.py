@@ -56,9 +56,11 @@ app.config.from_envvar('FLASK_SERVER_SETTINGS', silent=True)
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 
 from iconfinder.sources.views import sources_blueprint
+from iconfinder.icons.views import icons_blueprint
 
 ***REMOVED*** register the blueprints
 app.register_blueprint(sources_blueprint)
+app.register_blueprint(icons_blueprint)
 
 
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***

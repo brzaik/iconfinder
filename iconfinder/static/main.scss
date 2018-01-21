@@ -4,7 +4,6 @@ body{
 }
 
 h1, h2, h3, h4, h5 {
-  text-transform: uppercase;
   font-weight: normal;
 }
 
@@ -20,17 +19,18 @@ h1, h2, h3, h4, h5 {
     width: 10%;
     margin: 1.2%;
   }
+
   .card {
     text-align: center;
-    transition: 0.2s linear all;
     padding-top: 15%;
-
-    &:hover {
-      box-shadow: 0px 6px 12px ***REMOVED***ccc;
-    }
+    transition: linear .1s all;
 
     &.active {
       border: solid 3px lighten(***REMOVED***7B66FF, 10%);
+
+      .card-subtitle {
+        color: ***REMOVED***7B66FF !important;
+      }
     }
 
     .card-image {
@@ -40,11 +40,31 @@ h1, h2, h3, h4, h5 {
         max-width: 70% !important;
       }
     }
+
+    .card-subtitle {
+      transition: linear .1s all;
+    }
+  }
+
+  a:hover {
+    text-decoration: none !important;
+
+    .card {
+      box-shadow: 0px 6px 12px ***REMOVED***ccc;
+
+      .card-subtitle {
+        color: ***REMOVED***7B66FF !important;
+      }
+    }
+  }
+
+  a:focus {
+    text-decoration: none !important;
   }
 }
 
 .icon-content {
-  padding-top: 3.4rem;
+  padding-top: 3.6rem;
 }
 
 .icon-sidebar {
@@ -84,7 +104,6 @@ h1, h2, h3, h4, h5 {
 }
 
 .modal-title {
-  text-transform: uppercase;
   font-weight: bold;
   font-size: 2em;
 }

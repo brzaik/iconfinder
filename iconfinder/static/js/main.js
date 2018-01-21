@@ -8,4 +8,12 @@ $(document).ready(function() {
     e.preventDefault();
     $("***REMOVED***dialog_addSource").removeClass("active");
   });
+
+  $(".icon-card-link").on("click", function(e) {
+    e.preventDefault();
+    var icon_id = $(this).attr("data-icon-id");
+    $("***REMOVED***icon-sidebar").load('/icon/' + icon_id);
+    $(".icon-grid .card").removeClass("active");
+    $(this).children(".card").addClass("active");
+  });
 });
