@@ -17,7 +17,7 @@
 
   <header class="navbar">
     <section class="navbar-section">
-      <a href="/" class="btn btn-link"><strong>ICONFINDER</strong></a>
+      <a href="/" class="active btn btn-link"><strong>ICONFINDER</strong></a>
     </section>
     <section class="navbar-section">
       <a href="/sources" class="btn btn-link">Sources</a>
@@ -26,8 +26,15 @@
   </header>
 
   <div class="body-content">
-    {% block body %}
-    {% endblock %}
+    <div class="columns col-gapless">
+      <div class="icon-content column col-9">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <div class="icon-sidebar column col-3">
+        Sidebar
+      </div>
+    </div>
   </div>
 
 </body>

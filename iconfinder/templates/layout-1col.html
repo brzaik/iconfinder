@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>IconFinder</title>
+
+{% assets "all_css" %}
+  <link rel="stylesheet" href="{{ ASSET_URL }}">
+{% endassets %}
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+</style>
+
+</head>
+
+<body>
+
+  <header class="navbar">
+    <section class="navbar-section">
+      <a href="/" class="active btn btn-link"><strong>ICONFINDER</strong></a>
+    </section>
+    <section class="navbar-section">
+      <a href="/sources" class="btn btn-link">Sources</a>
+      <a href="/upload" class="btn btn-link">Upload Icons</a>
+    </section>
+  </header>
+
+  <div class="body-content">
+    <div class="icon-content" style="width: 80%; margin: 0 auto;">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+
+</body>
+
+{% assets "all_js" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+</html>

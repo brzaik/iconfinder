@@ -1,12 +1,12 @@
-{% extends "layout.html" %}
-{% block body %}
+{% extends "layout-2col.html" %}
+{% block content %}
 
 <div class="container icon-grid">
   {% for icon in icons %}
   <div class="card-wrapper">
     <div class="card">
       <div class="card-image">
-        <img src="" class="img-responsive" />
+        <img src="{{ url_for('static', filename=icon.localpath) }}" class="img-responsive" />
       </div>
       <div class="card-header">
         <div class="card-subtitle text-gray">{{ icon.shortname.capitalize() }}</div>

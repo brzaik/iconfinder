@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 6393be6e7b25
-Revises: 
+Revises:
 Create Date: 2018-01-20 18:32:49.426413
 
 """
@@ -30,8 +30,7 @@ def upgrade():
     sa.Column('mimetype', sa.String(length=20), nullable=True),
     sa.Column('image_filename', sa.String(length=500), nullable=True),
     sa.Column('image_url', sa.String(length=500), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('shortname')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('source',
     sa.Column('id', sa.Integer(), nullable=False),

@@ -8,7 +8,8 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment, Bundle
 from flask_uploads import UploadSet, IMAGES, configure_uploads
-from flask_migrate import Migrate
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 from config import *
@@ -25,6 +26,9 @@ app = Flask(__name__, instance_relative_config=True)
 assets = Environment(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 
 ***REMOVED*** load flask-assets bundles
@@ -99,4 +103,4 @@ def categories():
 
 
 if __name__ == "__main__":
-    app.run()
+    manager.run()

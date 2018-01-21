@@ -1,4 +1,4 @@
-from iconfinder import app
+from iconfinder import app, manager
 
 if __name__ == "__main__":
-    app.run()
+    manager.run()
