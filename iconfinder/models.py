@@ -52,7 +52,7 @@ class Category(db.Model):
 class Source(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True)
-    repo_type = db.Column(db.String(20), unique=True)
+    repo_type = db.Column(db.String(20))
     url = db.Column(db.String(500), unique=True)
 
     def __init__(self, name=None, repo_type=None, url=None):
