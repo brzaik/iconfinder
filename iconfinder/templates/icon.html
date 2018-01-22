@@ -23,7 +23,7 @@
       {% if source %}
       <tr>
         <td><strong>Source</strong></td>
-        <td><a href="{{ source.url }}" target="_blank">{{ source.name }}</a>&nbsp;&nbsp;<i class="icon icon-share"></i></td>
+        <td><span class="label label-rounded label-info">{{ source.repo_type }}</span>&nbsp;&nbsp;<a href="{{ source.url }}" target="_blank">{{ source.name }}&nbsp;&nbsp;<i class="icon icon-share"></i></a></td>
       </tr>
       {% endif %}
     </tbody>
