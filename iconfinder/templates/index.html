@@ -1,13 +1,76 @@
 {% extends "layout-2col.html" %}
 {% block content %}
 
+{% for category in categories %}
 <div class="container">
-  <h5 class="icon-category_header">Uncategorized</h5>
+  <h5 class="icon-category_header toggle_controls">
+    {{ category.name }}&nbsp;&nbsp;<a href="/categories/{{ category.id }}/delete" class="btn btn-sm hide" style="margin-top: -5px;"><i class="icon icon-delete"></i></a>
+  </h5>
+  <div class="icon-grid">
+    &nbsp;
+  </div>
+</div>
+{% endfor %}
+
+<div class="container">
+  <h5 class="icon-category_header">
+    Uncategorized&nbsp;&nbsp;<a href="***REMOVED***" class="trigger_addCategory btn btn-sm" style="margin-top: -5px;"><i class="icon icon-plus"></i>&nbsp;&nbsp;Add Category</a>
+  </h5>
   <div class="icon-grid">
     {% with icons=icons %}
     {% include 'category_icons.html' %}
     {% endwith %}
   </div>
 </div>
+
+<!-- Add Source Dialog -->
+<div class="modal" id="dialog_addCategory">
+  <a href="***REMOVED***" class="trigger_addCategory_close modal-overlay" aria-label="Close"></a>
+  <div class="modal-container">
+    <form method="POST" role="form">
+      {{ form.csrf }}
+      <div class="modal-header">
+        <a href="***REMOVED***" class="trigger_addCategory_close btn btn-clear float-right" aria-label="Close"></a>
+        <div class="modal-title h5">Add Category</div>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+
+          <!-- form input control -->
+          <div class="form-group">
+            <label class="form-label" for="input_categoryName">Name</label>
+            <input name="name" class="form-input" type="text" id="input_categoryName" placeholder="Name" maxlength="20" />
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="Save" />
+        <a href="***REMOVED***" class="btn trigger_addCategory_close">Cancel</a>
+      </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+
+    {% for message in messages %}
+      {% if "Error" not in message[1]: %}
+        <div class="alert alert-info">
+          <strong>Success! </strong> {{ message[1] }}
+        </div>
+      {% endif %}
+
+      {% if "Error" in message[1]: %}
+        <div class="alert alert-warning">
+          {{ message[1] }}
+        </div>
+      {% endif %}
+    {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  </div>
+</div>
+
 
 {% endblock %}

@@ -74,8 +74,9 @@ h1, h2, h3, h4, h5 {
 .icon-category_header {
   border-bottom: solid 1px ***REMOVED***E4E7EC;
   margin-left: .8rem;
-  padding-bottom: 8px;
+  padding-bottom: 12px;
   text-transform: uppercase;
+  line-height: 1.25em;
 }
 
 .icon-content {
@@ -94,6 +95,14 @@ h1, h2, h3, h4, h5 {
 
 .card, .modal-container {
   border-radius: .4rem !important;
+}
+
+.btn {
+  text-transform: none !important;
+}
+
+.hide {
+  display: none !important;
 }
 
 .navbar {

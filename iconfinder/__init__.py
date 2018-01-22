@@ -67,6 +67,14 @@ app.register_blueprint(icons_blueprint)
 ***REMOVED******REMOVED******REMOVED******REMOVED*** routes ***REMOVED******REMOVED******REMOVED******REMOVED***
 ***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
 
+class CategoryForm(Form):
+    name = TextField('Name:', validators=[validators.required()])
+
+    def reset(self):
+        blankData = MultiDict([ ('csrf', self.reset_csrf() ) ])
+        self.process(blankData)
+
+
 ***REMOVED*** Database Model
 from iconfinder.models import Icon, Category, Source
 
@@ -75,10 +83,35 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 ***REMOVED*** Default Route: Show icon library
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
+    form = CategoryForm(request.form)
+
     icons = Icon.query.order_by(Icon.shortname).all()
-    return render_template('index.html', title='IconFinder',icons=icons)
+    categories = Category.query.order_by(Category.name).all()
+
+    print form.errors
+    if request.method == 'POST':
+        name = request.form['name']
+
+        if form.validate():
+            flash('New category was successfully added.')
+            category = Category(name)
+            db.session.add(category)
+            db.session.commit()
+            return redirect(url_for('index'))
+        else:
+            flash('Please fill in the required fields and try again.')
+
+    return render_template('index.html', title='IconFinder',icons=icons, categories=categories, form=form)
+
+@app.route('/categories/<category_id>/delete')
+def delete_category(category_id):
+    category = Category.query.filter_by(id=category_id).first_or_404()
+
+    db.session.delete(category)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 
 ***REMOVED*** Icon Uploading
