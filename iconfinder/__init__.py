@@ -77,7 +77,7 @@ def allowed_file(filename):
 ***REMOVED*** Default Route: Show icon library
 @app.route("/")
 def index():
-    icons = Icon.query.all()
+    icons = Icon.query.order_by(Icon.shortname).all()
     return render_template('index.html', title='IconFinder',icons=icons)
 
 
