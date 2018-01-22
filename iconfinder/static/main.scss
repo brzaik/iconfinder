@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5 {
 
 .body-content {
   .default-padding {
-    padding: 20px;
+    padding: 1.2rem;
   }
 }
 
@@ -95,6 +95,19 @@ h1, h2, h3, h4, h5 {
 
 .card, .modal-container {
   border-radius: .4rem !important;
+}
+
+.card {
+  table {
+    thead > tr > th:first-child {
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+    }
+    tbody > tr > td:first-child {
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+    }
+  }
 }
 
 .btn {
