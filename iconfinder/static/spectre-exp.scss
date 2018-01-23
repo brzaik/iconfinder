@@ -1,6 +1,6 @@
 /*! Spectre.css Experimentals v0.5.0 | MIT License | github.com/picturepan2/spectre */
 .calendar {
-  border: .05rem solid ***REMOVED***e7e9ed;
+  border: .05rem solid #e7e9ed;
   border-radius: .1rem;
   display: block;
   min-width: 280px;
@@ -9,7 +9,7 @@
 
 .calendar .calendar-nav {
   align-items: center;
-  background: ***REMOVED***f8f9fa;
+  background: #f8f9fa;
   border-top-left-radius: .1rem;
   border-top-right-radius: .1rem;
   display: flex;
@@ -38,14 +38,14 @@
 }
 
 .calendar .calendar-header {
-  background: ***REMOVED***f8f9fa;
-  border-bottom: .05rem solid ***REMOVED***e7e9ed;
-  color: ***REMOVED***acb3c2;
+  background: #f8f9fa;
+  border-bottom: .05rem solid #e7e9ed;
+  color: #acb3c2;
   font-size: .7rem;
 }
 
 .calendar .calendar-body {
-  color: ***REMOVED***667189;
+  color: #667189;
 }
 
 .calendar .calendar-date {
@@ -60,7 +60,7 @@
   background: transparent;
   border: .05rem solid transparent;
   border-radius: 50%;
-  color: ***REMOVED***667189;
+  color: #667189;
   cursor: pointer;
   font-size: .7rem;
   height: 1.4rem;
@@ -77,8 +77,8 @@
 }
 
 .calendar .calendar-date .date-item.date-today {
-  border-color: ***REMOVED***e5e5f9;
-  color: ***REMOVED***5755d9;
+  border-color: #e5e5f9;
+  color: #5755d9;
 }
 
 .calendar .calendar-date .date-item:focus {
@@ -87,17 +87,17 @@
 
 .calendar .calendar-date .date-item:focus,
 .calendar .calendar-date .date-item:hover {
-  background: ***REMOVED***fefeff;
-  border-color: ***REMOVED***e5e5f9;
-  color: ***REMOVED***5755d9;
+  background: #fefeff;
+  border-color: #e5e5f9;
+  color: #5755d9;
   text-decoration: none;
 }
 
 .calendar .calendar-date .date-item:active,
 .calendar .calendar-date .date-item.active {
-  background: ***REMOVED***4b48d6;
-  border-color: ***REMOVED***3634d2;
-  color: ***REMOVED***fff;
+  background: #4b48d6;
+  border-color: #3634d2;
+  color: #fff;
 }
 
 .calendar .calendar-date .date-item.badge::after {
@@ -121,7 +121,7 @@
 }
 
 .calendar .calendar-range::before {
-  background: ***REMOVED***f1f1fc;
+  background: #f1f1fc;
   content: "";
   height: 1.4rem;
   left: 0;
@@ -140,7 +140,7 @@
 }
 
 .calendar .calendar-range .date-item {
-  color: ***REMOVED***5755d9;
+  color: #5755d9;
 }
 
 .calendar.calendar-lg .calendar-body {
@@ -148,8 +148,8 @@
 }
 
 .calendar.calendar-lg .calendar-body .calendar-date {
-  border-bottom: .05rem solid ***REMOVED***e7e9ed;
-  border-right: .05rem solid ***REMOVED***e7e9ed;
+  border-bottom: .05rem solid #e7e9ed;
+  border-right: .05rem solid #e7e9ed;
   display: flex;
   display: -ms-flexbox;
   -ms-flex-direction: column;
@@ -208,7 +208,7 @@
 }
 
 .carousel {
-  background: ***REMOVED***f8f9fa;
+  background: #f8f9fa;
   display: block;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
@@ -248,7 +248,7 @@
 .carousel .carousel-container .item-next {
   background: rgba(231, 233, 237, .25);
   border-color: rgba(231, 233, 237, .5);
-  color: ***REMOVED***e7e9ed;
+  color: #e7e9ed;
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -278,7 +278,7 @@
 .carousel .carousel-locator:nth-of-type(2):checked ~ .carousel-nav .nav-item:nth-of-type(2),
 .carousel .carousel-locator:nth-of-type(3):checked ~ .carousel-nav .nav-item:nth-of-type(3),
 .carousel .carousel-locator:nth-of-type(4):checked ~ .carousel-nav .nav-item:nth-of-type(4) {
-  color: ***REMOVED***e7e9ed;
+  color: #e7e9ed;
 }
 
 .carousel .carousel-nav {
@@ -393,7 +393,7 @@
   background: currentColor;
   border-radius: 50%;
   box-shadow: 0 -5px, 0 5px;
-  color: ***REMOVED***fff;
+  color: #fff;
   content: "";
   height: 3px;
   position: absolute;
@@ -426,7 +426,7 @@
 .comparison-slider .comparison-label {
   background: rgba(69, 77, 93, .5);
   bottom: .8rem;
-  color: ***REMOVED***fff;
+  color: #fff;
   padding: .2rem .4rem;
   position: absolute;
   -webkit-user-select: none;
@@ -453,27 +453,27 @@
   }
 }
 
-.filter .filter-tag***REMOVED***tag-0:checked ~ .filter-nav .chip[for="tag-0"],
-.filter .filter-tag***REMOVED***tag-1:checked ~ .filter-nav .chip[for="tag-1"],
-.filter .filter-tag***REMOVED***tag-2:checked ~ .filter-nav .chip[for="tag-2"],
-.filter .filter-tag***REMOVED***tag-3:checked ~ .filter-nav .chip[for="tag-3"],
-.filter .filter-tag***REMOVED***tag-4:checked ~ .filter-nav .chip[for="tag-4"],
-.filter .filter-tag***REMOVED***tag-5:checked ~ .filter-nav .chip[for="tag-5"],
-.filter .filter-tag***REMOVED***tag-6:checked ~ .filter-nav .chip[for="tag-6"],
-.filter .filter-tag***REMOVED***tag-7:checked ~ .filter-nav .chip[for="tag-7"],
-.filter .filter-tag***REMOVED***tag-8:checked ~ .filter-nav .chip[for="tag-8"] {
-  background: ***REMOVED***5755d9;
-  color: ***REMOVED***fff;
+.filter .filter-tag#tag-0:checked ~ .filter-nav .chip[for="tag-0"],
+.filter .filter-tag#tag-1:checked ~ .filter-nav .chip[for="tag-1"],
+.filter .filter-tag#tag-2:checked ~ .filter-nav .chip[for="tag-2"],
+.filter .filter-tag#tag-3:checked ~ .filter-nav .chip[for="tag-3"],
+.filter .filter-tag#tag-4:checked ~ .filter-nav .chip[for="tag-4"],
+.filter .filter-tag#tag-5:checked ~ .filter-nav .chip[for="tag-5"],
+.filter .filter-tag#tag-6:checked ~ .filter-nav .chip[for="tag-6"],
+.filter .filter-tag#tag-7:checked ~ .filter-nav .chip[for="tag-7"],
+.filter .filter-tag#tag-8:checked ~ .filter-nav .chip[for="tag-8"] {
+  background: #5755d9;
+  color: #fff;
 }
 
-.filter .filter-tag***REMOVED***tag-1:checked ~ .filter-body .filter-item:not([data-tag~="tag-1"]),
-.filter .filter-tag***REMOVED***tag-2:checked ~ .filter-body .filter-item:not([data-tag~="tag-2"]),
-.filter .filter-tag***REMOVED***tag-3:checked ~ .filter-body .filter-item:not([data-tag~="tag-3"]),
-.filter .filter-tag***REMOVED***tag-4:checked ~ .filter-body .filter-item:not([data-tag~="tag-4"]),
-.filter .filter-tag***REMOVED***tag-5:checked ~ .filter-body .filter-item:not([data-tag~="tag-5"]),
-.filter .filter-tag***REMOVED***tag-6:checked ~ .filter-body .filter-item:not([data-tag~="tag-6"]),
-.filter .filter-tag***REMOVED***tag-7:checked ~ .filter-body .filter-item:not([data-tag~="tag-7"]),
-.filter .filter-tag***REMOVED***tag-8:checked ~ .filter-body .filter-item:not([data-tag~="tag-8"]) {
+.filter .filter-tag#tag-1:checked ~ .filter-body .filter-item:not([data-tag~="tag-1"]),
+.filter .filter-tag#tag-2:checked ~ .filter-body .filter-item:not([data-tag~="tag-2"]),
+.filter .filter-tag#tag-3:checked ~ .filter-body .filter-item:not([data-tag~="tag-3"]),
+.filter .filter-tag#tag-4:checked ~ .filter-body .filter-item:not([data-tag~="tag-4"]),
+.filter .filter-tag#tag-5:checked ~ .filter-body .filter-item:not([data-tag~="tag-5"]),
+.filter .filter-tag#tag-6:checked ~ .filter-body .filter-item:not([data-tag~="tag-6"]),
+.filter .filter-tag#tag-7:checked ~ .filter-body .filter-item:not([data-tag~="tag-7"]),
+.filter .filter-tag#tag-8:checked ~ .filter-body .filter-item:not([data-tag~="tag-8"]) {
   display: none;
 }
 
@@ -492,7 +492,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: ***REMOVED***f8f9fa;
+  background: #f8f9fa;
   border: 0;
   border-radius: .1rem;
   display: block;
@@ -512,19 +512,19 @@
 }
 
 .meter::-webkit-meter-bar {
-  background: ***REMOVED***f8f9fa;
+  background: #f8f9fa;
 }
 
 .meter::-webkit-meter-optimum-value {
-  background: ***REMOVED***32b643;
+  background: #32b643;
 }
 
 .meter::-webkit-meter-suboptimum-value {
-  background: ***REMOVED***ffb700;
+  background: #ffb700;
 }
 
 .meter::-webkit-meter-even-less-good-value {
-  background: ***REMOVED***e85600;
+  background: #e85600;
 }
 
 .meter::-moz-meter-bar,
@@ -535,15 +535,15 @@
 }
 
 .meter:-moz-meter-optimum::-moz-meter-bar {
-  background: ***REMOVED***32b643;
+  background: #32b643;
 }
 
 .meter:-moz-meter-sub-optimum::-moz-meter-bar {
-  background: ***REMOVED***ffb700;
+  background: #ffb700;
 }
 
 .meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-  background: ***REMOVED***e85600;
+  background: #e85600;
 }
 
 .off-canvas {
@@ -566,7 +566,7 @@
 }
 
 .off-canvas .off-canvas-sidebar {
-  background: ***REMOVED***f8f9fa;
+  background: #f8f9fa;
   bottom: 0;
   left: 0;
   min-width: 10rem;
@@ -650,7 +650,7 @@
 
 .parallax .parallax-front {
   align-items: center;
-  color: ***REMOVED***fff;
+  color: #fff;
   display: flex;
   display: -ms-flexbox;
   -ms-flex-align: center;
@@ -772,10 +772,10 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: ***REMOVED***f0f1f4;
+  background: #f0f1f4;
   border: 0;
   border-radius: .1rem;
-  color: ***REMOVED***5755d9;
+  color: #5755d9;
   height: .2rem;
   position: relative;
   width: 100%;
@@ -787,18 +787,18 @@
 }
 
 .progress::-webkit-progress-value {
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
   border-radius: .1rem;
 }
 
 .progress::-moz-progress-bar {
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
   border-radius: .1rem;
 }
 
 .progress:indeterminate {
   animation: progress-indeterminate 1.5s linear infinite;
-  background: ***REMOVED***f0f1f4 linear-gradient(to right, ***REMOVED***5755d9 30%, ***REMOVED***f0f1f4 30%) top left/150% 150% no-repeat;
+  background: #f0f1f4 linear-gradient(to right, #5755d9 30%, #f0f1f4 30%) top left/150% 150% no-repeat;
 }
 
 .progress:indeterminate::-moz-progress-bar {
@@ -835,7 +835,7 @@
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
   border: 0;
   border-radius: 50%;
   height: .6rem;
@@ -845,7 +845,7 @@
 }
 
 .slider::-moz-range-thumb {
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
   border: 0;
   border-radius: 50%;
   height: .6rem;
@@ -854,7 +854,7 @@
 }
 
 .slider::-ms-thumb {
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
   border: 0;
   border-radius: 50%;
   height: .6rem;
@@ -876,45 +876,45 @@
 
 .slider:disabled::-webkit-slider-thumb,
 .slider.disabled::-webkit-slider-thumb {
-  background: ***REMOVED***e7e9ed;
+  background: #e7e9ed;
   transform: scale(1);
 }
 
 .slider:disabled::-moz-range-thumb,
 .slider.disabled::-moz-range-thumb {
-  background: ***REMOVED***e7e9ed;
+  background: #e7e9ed;
   transform: scale(1);
 }
 
 .slider:disabled::-ms-thumb,
 .slider.disabled::-ms-thumb {
-  background: ***REMOVED***e7e9ed;
+  background: #e7e9ed;
   transform: scale(1);
 }
 
 .slider::-webkit-slider-runnable-track {
-  background: ***REMOVED***f0f1f4;
+  background: #f0f1f4;
   border-radius: .1rem;
   height: .1rem;
   width: 100%;
 }
 
 .slider::-moz-range-track {
-  background: ***REMOVED***f0f1f4;
+  background: #f0f1f4;
   border-radius: .1rem;
   height: .1rem;
   width: 100%;
 }
 
 .slider::-ms-track {
-  background: ***REMOVED***f0f1f4;
+  background: #f0f1f4;
   border-radius: .1rem;
   height: .1rem;
   width: 100%;
 }
 
 .slider::-ms-fill-lower {
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
 }
 
 .timeline .timeline-item {
@@ -925,7 +925,7 @@
 }
 
 .timeline .timeline-item::before {
-  background: ***REMOVED***e7e9ed;
+  background: #e7e9ed;
   content: "";
   height: 100%;
   left: 11px;
@@ -947,7 +947,7 @@
 
 .timeline .timeline-item .timeline-icon {
   border-radius: 50%;
-  color: ***REMOVED***fff;
+  color: #fff;
   display: block;
   height: 1.2rem;
   text-align: center;
@@ -955,7 +955,7 @@
 }
 
 .timeline .timeline-item .timeline-icon::before {
-  border: .1rem solid ***REMOVED***5755d9;
+  border: .1rem solid #5755d9;
   border-radius: 50%;
   content: "";
   display: block;
@@ -967,7 +967,7 @@
 }
 
 .timeline .timeline-item .timeline-icon.icon-lg {
-  background: ***REMOVED***5755d9;
+  background: #5755d9;
   line-height: 1rem;
 }
 

@@ -1,5 +1,5 @@
 body{
-  background: ***REMOVED***F1F3F5 !important;
+  background: #F1F3F5 !important;
   font-family: 'Montserrat', sans-serif !important;
 }
 
@@ -24,13 +24,13 @@ h1, h2, h3, h4, h5 {
     text-align: center;
     padding-top: 15%;
     transition: linear .1s all;
-    border: solid 3px ***REMOVED***FFF;
+    border: solid 3px #FFF;
 
     &.active {
-      border: solid 3px lighten(***REMOVED***7B66FF, 10%);
+      border: solid 3px lighten(#7B66FF, 10%);
 
       .card-subtitle {
-        color: ***REMOVED***7B66FF !important;
+        color: #7B66FF !important;
       }
     }
 
@@ -58,10 +58,10 @@ h1, h2, h3, h4, h5 {
     text-decoration: none !important;
 
     .card {
-      box-shadow: 0px 6px 12px ***REMOVED***ccc;
+      box-shadow: 0px 6px 12px #ccc;
 
       .card-subtitle {
-        color: ***REMOVED***7B66FF !important;
+        color: #7B66FF !important;
       }
     }
   }
@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .icon-category_header {
-  border-bottom: solid 1px ***REMOVED***E4E7EC;
+  border-bottom: solid 1px #E4E7EC;
   margin-left: .8rem;
   padding-bottom: 12px;
   text-transform: uppercase;
@@ -84,8 +84,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .icon-sidebar {
-  background: ***REMOVED***FFF;
-  box-shadow: 0px 2px 8px ***REMOVED***ccc;
+  background: #FFF;
+  box-shadow: 0px 2px 8px #ccc;
   height: 100%;
   padding: 3.4rem 1rem 1rem 1rem !important;
   position: fixed;
@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5 {
 p.zero-state {
   text-align: center;
   font-size: 1.5rem;
-  color: ***REMOVED***E4E7EC;
+  color: #E4E7EC;
   line-height: 1.2em;
   margin-top: 40px;
 }
@@ -127,8 +127,8 @@ p.zero-state {
 }
 
 .navbar {
-  background: ***REMOVED***19212B;
-  box-shadow: 0px 2px 8px ***REMOVED***ccc;
+  background: #19212B;
+  box-shadow: 0px 2px 8px #ccc;
   position: fixed;
   z-index: 999;
   top: 0px;
@@ -136,17 +136,17 @@ p.zero-state {
   width: 100%;
 
   .btn, .btn.btn-link {
-    color: ***REMOVED***7B66FF;
+    color: #7B66FF;
     height: 2.6rem;
     padding: .8rem 1.2rem;
 
     &.active {
-      border-bottom: solid 3px lighten(***REMOVED***7B66FF, 10%);
-      color: lighten(***REMOVED***7B66FF, 10%);
+      border-bottom: solid 3px lighten(#7B66FF, 10%);
+      color: lighten(#7B66FF, 10%);
     }
 
     &:hover {
-      color: lighten(***REMOVED***7B66FF, 10%);
+      color: lighten(#7B66FF, 10%);
     }
   }
 }
@@ -157,25 +157,25 @@ p.zero-state {
 }
 
 .label.label-info {
-  background: ***REMOVED***47A8F3;
-  color: ***REMOVED***FFF;
+  background: #47A8F3;
+  color: #FFF;
 }
 
 .dropzone {
-  border: 6px dashed ***REMOVED***e0e0e0 !important;
+  border: 6px dashed #e0e0e0 !important;
   border-radius: 6px;
   height: 500px;
   transition: linear .3s all;
 
   text-align: center;
   font-size: 1.5rem;
-  color: ***REMOVED***E4E7EC;
+  color: #E4E7EC;
   line-height: 1.2em;
 
   &.dragover {
-    background: lighten(***REMOVED***7B66FF, 20%);
-    border: 6px dashed lighten(***REMOVED***7B66FF, 10%) !important;
-    color: ***REMOVED***7B66FF;
+    background: lighten(#7B66FF, 20%);
+    border: 6px dashed lighten(#7B66FF, 10%) !important;
+    color: #7B66FF;
   }
 }
 
@@ -196,7 +196,7 @@ p.zero-state {
     repeat-x,
     repeat-y,
     repeat-y;
-  animation: marching-ants-***REMOVED***{$id} $speed;
+  animation: marching-ants-#{$id} $speed;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-play-state: paused;
@@ -217,7 +217,7 @@ p.zero-state {
 };
 
 @mixin marching-ants-v2-animation($ant-size, $id){
-  @keyframes marching-ants-***REMOVED***{$id} {
+  @keyframes marching-ants-#{$id} {
     0% {
       background-position:
         0 0,
@@ -240,8 +240,8 @@ p.zero-state {
 
   &.selected {
     @include marching-ants-v2-init(20px, 3px,1s,2);
-    @include marching-ants-v2-color(***REMOVED***FF7F32,***REMOVED***fff);
-    color: ***REMOVED***a00;
+    @include marching-ants-v2-color(#FF7F32,#fff);
+    color: #a00;
   }
 }
 

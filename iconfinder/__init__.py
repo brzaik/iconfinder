@@ -1,6 +1,6 @@
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** imports ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+#################
+#### imports ####
+#################
 
 from os.path import join, isfile
 
@@ -16,12 +16,12 @@ from wtforms import Form, TextField, TextAreaField, validators, StringField, Sub
 from config import *
 
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** config ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+################
+#### config ####
+################
 
 
-***REMOVED*** Initialize app
+# Initialize app
 app = Flask(__name__, instance_relative_config=True)
 
 assets = Environment(app)
@@ -33,7 +33,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 
-***REMOVED*** load flask-assets bundles
+# load flask-assets bundles
 scss = Bundle('*.scss', filters='scss', output='css/sass.css')
 all_css = Bundle(scss, filters='cssmin', output="gen/all.css")
 assets.register('all_css', all_css)
@@ -41,7 +41,7 @@ assets.register('all_css', all_css)
 all_js = Bundle('js/*.js', filters='rjsmin', output="gen/all.min.js")
 assets.register('all_js', all_js)
 
-***REMOVED*** set livereload for app
+# set livereload for app
 app.debug = True
 app.jinja_env.auto_reload = True
 
@@ -53,21 +53,21 @@ app.config.update(dict(
 app.config.from_envvar('FLASK_SERVER_SETTINGS', silent=True)
 
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** blueprints ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+####################
+#### blueprints ####
+####################
 
 from iconfinder.sources.views import sources_blueprint
 from iconfinder.icons.views import icons_blueprint
 
-***REMOVED*** register the blueprints
+# register the blueprints
 app.register_blueprint(sources_blueprint)
 app.register_blueprint(icons_blueprint)
 
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** routes ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+################
+#### routes ####
+################
 
 class CategoryForm(Form):
     name = TextField('Name:', validators=[validators.required()])
@@ -77,14 +77,14 @@ class CategoryForm(Form):
         self.process(blankData)
 
 
-***REMOVED*** Database Model
+# Database Model
 from iconfinder.models import Icon, Category, Source
 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-***REMOVED*** Default Route: Show icon library
+# Default Route: Show icon library
 @app.route("/", methods=['GET', 'POST'])
 def index():
     form = CategoryForm(request.form)
@@ -116,7 +116,7 @@ def delete_category(category_id):
     return redirect(url_for('index'))
 
 
-***REMOVED*** Icon Uploading
+# Icon Uploading
 @app.route('/upload/', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -138,7 +138,7 @@ def process_upload():
     return ""
 
 
-***REMOVED*** sample api route
+# sample api route
 @app.route('/api/icons/')
 def icons():
     icons = Icon.query.all()

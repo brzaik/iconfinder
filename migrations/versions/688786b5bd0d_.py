@@ -9,7 +9,7 @@ from alembic import op
 import sqlalchemy as sa
 
 
-***REMOVED*** revision identifiers, used by Alembic.
+# revision identifiers, used by Alembic.
 revision = '688786b5bd0d'
 down_revision = 'c95bd3747a97'
 branch_labels = None

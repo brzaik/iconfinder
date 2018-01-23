@@ -1,10 +1,10 @@
-***REMOVED*** iconfinder/sources/views.py
+# iconfinder/sources/views.py
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** imports ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+#################
+#### imports ####
+#################
 
-***REMOVED***
+import os
 from os.path import join
 
 from flask import render_template, Blueprint, request, redirect, url_for, flash, abort
@@ -12,12 +12,12 @@ from wtforms import Form, TextField, TextAreaField, validators, StringField, Sub
 from iconfinder import app, db
 from git import *
 
-***REMOVED*** Database Model
+# Database Model
 from iconfinder.models import Source, Icon, Category
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** config ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+################
+#### config ####
+################
 
 sources_blueprint = Blueprint('sources', __name__)
 
@@ -32,13 +32,13 @@ class SourceForm(Form):
         self.process(blankData)
 
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** helper functions ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+##########################
+#### helper functions ####
+##########################
 
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED*** routes ***REMOVED******REMOVED******REMOVED******REMOVED***
-***REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED******REMOVED***
+################
+#### routes ####
+################
 
 @sources_blueprint.route('/sources/', methods=['GET', 'POST'])
 def sources_list():
@@ -72,9 +72,9 @@ def delete_source(source_id):
     return redirect(url_for('sources.sources_list'))
 
 
-***REMOVED******REMOVED*** TO-DO:
-***REMOVED***   - Need to provide for cases in which there are updates to the source repo but it has already been cloned
-***REMOVED***   - Need to ensure duplicates within the same source repo are not added to db
+## TO-DO:
+#   - Need to provide for cases in which there are updates to the source repo but it has already been cloned
+#   - Need to ensure duplicates within the same source repo are not added to db
 
 @sources_blueprint.route('/sources/refresh')
 def sources_refresh():
