@@ -3,7 +3,6 @@ $(document).ready(function() {
     e.preventDefault();
     $("***REMOVED***dialog_addSource").addClass("active");
   });
-
   $("***REMOVED***dialog_addSource .trigger_addSource_close").click(function(e) {
     e.preventDefault();
     $("***REMOVED***dialog_addSource").removeClass("active");
@@ -13,10 +12,18 @@ $(document).ready(function() {
     e.preventDefault();
     $("***REMOVED***dialog_addCategory").addClass("active");
   });
-
   $("***REMOVED***dialog_addCategory .trigger_addCategory_close").click(function(e) {
     e.preventDefault();
     $("***REMOVED***dialog_addCategory").removeClass("active");
+  });
+
+  $(".trigger_uploadFiles").click(function(e) {
+    e.preventDefault();
+    $("***REMOVED***dialog_uploadFiles").addClass("active");
+  });
+  $("***REMOVED***dialog_uploadFiles .trigger_uploadFiles_close").click(function(e) {
+    e.preventDefault();
+    $("***REMOVED***dialog_uploadFiles").removeClass("active");
   });
 
   $(".icon-category_header.toggle_controls").hover(
@@ -34,5 +41,12 @@ $(document).ready(function() {
     $("***REMOVED***icon-sidebar").load('/icon/' + icon_id);
     $(".icon-grid .card").removeClass("active");
     $(this).children(".card").addClass("active");
+  });
+
+  $(".dropzone").on("dragover dragenter", function() {
+    $(this).addClass("dragover");
+  });
+  $(".dropzone").on("dragleave dragend drop", function() {
+    $(this).removeClass("dragover");
   });
 });

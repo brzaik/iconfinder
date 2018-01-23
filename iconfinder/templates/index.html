@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<!-- Add Source Dialog -->
+<!-- Add Category Dialog -->
 <div class="modal" id="dialog_addCategory">
   <a href="***REMOVED***" class="trigger_addCategory_close modal-overlay" aria-label="Close"></a>
   <div class="modal-container">
@@ -72,5 +72,23 @@
   </div>
 </div>
 
+<!-- Upload Files Dialog -->
+<div class="modal" id="dialog_uploadFiles">
+  <a href="***REMOVED***" class="trigger_uploadFiles_close modal-overlay" aria-label="Close"></a>
+  <div class="modal-container">
+    <div class="modal-header">
+      <a href="***REMOVED***" class="trigger_uploadFiles_close btn btn-clear float-right" aria-label="Close"></a>
+      <div class="modal-title h5">Upload Files</div>
+    </div>
+    <div class="modal-body">
+      <div class="content">
+        {{ dropzone.create(action_view='upload') }}
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="***REMOVED***" class="btn trigger_uploadFiles_close">Cancel</a>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

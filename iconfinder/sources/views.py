@@ -94,7 +94,7 @@ def sources_refresh():
             for file in files:
                 if file.lower().endswith(t_supported_filetypes):
                     icon_shortname = file.split('.')[0]
-                    icon_mimetype = file.split('.')[1]
+                    icon_mimetype = file.split('.')[-1:]
                     icon_localpath = root.split(app.config['STATIC_DIR'])[1] + "/" + file
                     icon = Icon(shortname=icon_shortname, mimetype=icon_mimetype, localpath=icon_localpath, source_id=source.id)
                     db.session.add(icon)

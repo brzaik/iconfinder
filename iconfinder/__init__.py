@@ -10,6 +10,7 @@ from flask_assets import Environment, Bundle
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+from flask_dropzone import Dropzone
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 from config import *
@@ -26,6 +27,7 @@ app = Flask(__name__, instance_relative_config=True)
 assets = Environment(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+dropzone = Dropzone(app)
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
@@ -115,9 +117,20 @@ def delete_category(category_id):
 
 
 ***REMOVED*** Icon Uploading
-@app.route('/upload/')
+@app.route('/upload/', methods=['GET', 'POST'])
 def upload():
+    if request.method == 'POST':
+        for key, file in request.files.iteritems():
+            file.save(os.path.join(app.config['UPLOADED_IMAGES_DEST'], file.filename))
+            icon_shortname = file.filename.split(".")[0]
+            icon_mimetype = file.filename.split(".")[-1:]
+            icon_localpath = "uploads/" + file.filename
+            icon = Icon(shortname=icon_shortname, mimetype=icon_mimetype, localpath=icon_localpath, source_id=None)
+            db.session.add(icon)
+            db.session.commit()
+
     return render_template('upload.html', title='Upload to Icon Library')
+
 
 @app.route('/process_upload', methods=["POST"])
 def process_upload():
