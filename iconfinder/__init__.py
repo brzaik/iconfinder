@@ -112,7 +112,7 @@ def delete_category(category_id):
     category = Category.query.filter_by(id=category_id).first_or_404()
 
     db.session.delete(category)
-    db.session.commit()
+    db.session.commit() 
     return redirect(url_for('index'))
 
 
