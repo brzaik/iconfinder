@@ -22,7 +22,7 @@ MYSQL_USER = ''
 MYSQL_PASSWORD = ''
 MYSQL_DB = ''
 MYSQL_HOST = ''
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + MYSQL_USER + ':' + MYSQL_PASSWORD + MYSQL_HOST + MYSQL_DB + '?charset=utf8'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + MYSQL_USER + ':' + MYSQL_PASSWORD + "@" + MYSQL_HOST + "/" + MYSQL_DB + '?charset=utf8'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # Bcrypt algorithm hashing rounds
