@@ -5,9 +5,10 @@
 #################
 
 import os
+import sys
 from os.path import join
 
-from flask import render_template, Blueprint, request, redirect, url_for, flash, abort
+from flask import render_template, Blueprint, request, redirect, url_for, flash, abort, jsonify
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from iconfinder import app, db
 from git import *
@@ -88,6 +89,8 @@ def sources_refresh():
         if os.path.exists(repo_path):
             pass
         else:
+            print >> sys.stderr, "Path: " + repo_path
+            sys.stdout = sys.stderr
             new_repo = Repo.clone_from(source.url, repo_path)
 
         for root, dirs, files in os.walk(repo_path):
@@ -101,3 +104,10 @@ def sources_refresh():
                     db.session.commit()
 
     return render_template('sources_refresh.html', title='Refresh Icons')
+    
+
+@sources_blueprint.route('/api/v1.0/sources', methods=['GET'])
+def api_get_sources():
+    sources = Source.query.order_by(Source.id).all()
+  
+    return jsonify(sources=[e.serialize() for e in sources])

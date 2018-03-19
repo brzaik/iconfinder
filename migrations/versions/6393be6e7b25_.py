@@ -30,6 +30,8 @@ def upgrade():
     sa.Column('mimetype', sa.String(length=20), nullable=True),
     sa.Column('image_filename', sa.String(length=500), nullable=True),
     sa.Column('image_url', sa.String(length=500), nullable=True),
+    sa.Column('source_id', sa.Integer(), sa.ForeignKey('source.id'), nullable=False),
+    sa.Column('category_id', sa.Integer(), sa.ForeignKey('category.id'), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('source',

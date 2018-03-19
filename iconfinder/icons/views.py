@@ -37,3 +37,9 @@ def icon_show(icon_id):
     category = Category.query.filter_by(id=icon.category_id).first()
 
     return render_template('icon.html', icon=icon, source=source, category=category)
+    
+@icons_blueprint.route('/api/v1.0/icons', methods=['GET'])
+def api_get_icons():
+    icons = Icon.query.order_by(Icon.shortname).all()
+    
+    return jsonify(icons=[e.serialize() for e in icons])

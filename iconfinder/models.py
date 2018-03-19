@@ -7,8 +7,8 @@ class Icon(db.Model):
     image_filename = db.Column(db.String(500), default=None, nullable=True)
     image_url = db.Column(db.String(500), default=None, nullable=True)
     localpath = db.Column(db.String(500), default=None, nullable=True)
-    source_id = db.Column(db.Integer, unique=True)
-    category_id = db.Column(db.Integer, unique=True)
+    source_id = db.Column(db.Integer)
+    category_id = db.Column(db.Integer)
 
     def __init__(self, shortname=None, mimetype=None, image_filename=None, image_url=None, localpath=None, source_id=None, category_id=None):
         self.shortname = shortname
@@ -20,7 +20,7 @@ class Icon(db.Model):
         self.category_id = category_id
 
     def __repr__(self):
-        return "<Icon(id=%d, shortname='%s', mimetype='%s', localpath='%s', source_id='%s')>" % (self.id, self.shortname, self.mimetype, self.localpath, self.source_id, self.category_id)
+        return "<Icon(id=%d, shortname='%s', mimetype='%s', localpath='%s', source_id='%s', category_id='%s')>" % (self.id, self.shortname, self.mimetype, self.localpath, self.source_id, self.category_id)
 
     def to_dict(self):
         return {
@@ -31,6 +31,17 @@ class Icon(db.Model):
             'source_id': self.source_id,
             'category_id': self.category_id
         }
+    
+    def serialize(self):
+        return {
+            'id': self.id, 
+            'shortname': self.shortname,
+            'mimetype': self.mimetype,
+            'localpath': self.localpath,
+            'source_id': self.source_id,
+            'category_id': self.category_id
+        }
+        
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -43,6 +54,12 @@ class Category(db.Model):
         return "<Category(id=%d, name='%s')>" % (self.id, self.name)
 
     def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
+    
+    def serialize(self):
         return {
             'id': self.id,
             'name': self.name
@@ -64,6 +81,14 @@ class Source(db.Model):
         return "<Source(id=%d, name='%s', repo_type='%s', url='%s')>" % (self.id, self.name, self.repo_type, self.url)
 
     def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'repo_type': self.repo_type,
+            'url': self.url
+        }
+    
+    def serialize(self):
         return {
             'id': self.id,
             'name': self.name,
